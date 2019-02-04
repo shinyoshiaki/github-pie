@@ -3,9 +3,9 @@ import * as d3 from "d3";
 
 const PieChart: FunctionComponent<{
   data?: { type: string; count: number }[];
-}> = ({ data }) => {
-  const width = 500;
-  const height = 500;
+  width: number;
+  height: number;
+}> = ({ data, width, height }) => {
   const radius = Math.min(width, height) / 2;
 
   const pie = d3

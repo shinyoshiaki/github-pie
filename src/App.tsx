@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect } from "react";
 import useObject from "useobject";
 import axios from "axios";
+import Fit from "react-fit";
 import PieChart from "./components/pie";
 
 const App: FunctionComponent = () => {
@@ -67,7 +68,7 @@ const App: FunctionComponent = () => {
       <p style={{ fontSize: 20 }}>{state.visible}</p>
       {state.result.length > 0 && (
         <div style={{ display: "flex" }}>
-          <div>
+          <div style={{ width: "30vw" }}>
             {state.result
               .sort((a, b) => b.count - a.count)
               .map(item => (
@@ -76,7 +77,20 @@ const App: FunctionComponent = () => {
                 </p>
               ))}
           </div>
-          <PieChart data={state.result} />
+          <div
+            style={{
+              width: "80vw",
+              maxWidth: "80vh",
+              height: "80vw",
+              maxHeight: "80vh"
+            }}
+          >
+            <Fit
+              target={(a, b) => (
+                <PieChart data={state.result} width={a} height={b} />
+              )}
+            />
+          </div>
         </div>
       )}
     </div>
