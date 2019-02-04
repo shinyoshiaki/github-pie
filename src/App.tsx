@@ -68,7 +68,7 @@ const App: FunctionComponent = () => {
       <p style={{ fontSize: 20 }}>{state.visible}</p>
       {state.result.length > 0 && (
         <div style={{ display: "flex" }}>
-          <div style={{ width: "30vw" }}>
+          <div style={{ width: "20vw" }}>
             {state.result
               .sort((a, b) => b.count - a.count)
               .map(item => (
