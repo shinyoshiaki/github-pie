@@ -8,7 +8,8 @@ const App: FunctionComponent = () => {
 
   const { state, setState } = useObject({
     result: [] as { type: string; count: number }[],
-    input: ""
+    input: "",
+    visible: ""
   });
 
   const fetch = async (user: string) => {
@@ -58,11 +59,12 @@ const App: FunctionComponent = () => {
       <button
         onClick={() => {
           fetch(state.input);
-          setState({ input: "" });
+          setState({ visible: state.input, input: "" });
         }}
       >
         show
       </button>
+      <p style={{ fontSize: 20 }}>{state.visible}</p>
       {state.result.length > 0 && (
         <div style={{ display: "flex" }}>
           <div>
