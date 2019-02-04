@@ -19,13 +19,12 @@ const App: FunctionComponent = () => {
       const res = await req
         .get(user + "/repos?per_page=100&page=" + i)
         .catch(console.log);
-      if ((res as any).data.length === 0) break;
       if (!res) break;
+      if ((res as any).data.length === 0) break;
       ress.push((res as any).data);
     }
+    if (ress.length === 0) return;
     const res = ress.flatMap(item => item);
-    console.log({ res });
-    if (res.length === 0) return;
 
     const languages = res.flatMap(item => {
       if (item.language) {
